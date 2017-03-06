@@ -1,12 +1,12 @@
 var fs = require('fs');
 
 var settings = {};
-var acljson = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
+var acl = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
-for (var i in acljson) {
-    for (var url in acljson[i]) {
-        settings[url] = acljson[i][url];
-    }
+for (let one of acl) {
+    Object.keys(one).forEach(function(url) {
+        settings[url] = one[url];
+    });
 }
 
 module.exports = {
@@ -22,10 +22,9 @@ module.exports = {
         }
 
         var roles = settings[url];
-        var isAllowed = false;
 
-        for (var i in userRoles) {
-            var userRole = userRoles[i];
+        var isAllowed = false;
+        for (let userRole of userRoles) {
             isAllowed = isAllowed || (roles.indexOf(userRole) >= 0);
         }
 
