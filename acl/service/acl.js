@@ -11,6 +11,11 @@ for (var i in acljson) {
 
 module.exports = {
     isAuthorized:function(url, userRoles) {
+        if (!url || !Array.isArray(userRoles)) {
+            console.log('Missing params');
+            return;
+        }
+
         if (!settings.hasOwnProperty(url)) {
             console.log('Denied(Url):' + url);
             return false;
