@@ -10,8 +10,8 @@ for (let one of settings) {
 }
 
 module.exports = {
-    isAuthorized:function(url, userRoles) {
-        if (!url || !Array.isArray(userRoles)) {
+    isAuthorized:function(url, roles) {
+        if (!url || !Array.isArray(roles)) {
             console.log('Missing params');
             return false;
         }
@@ -22,12 +22,12 @@ module.exports = {
         }
 
         var isAllowed = false;
-        for (let userRole of userRoles) {
-            isAllowed = isAllowed || (acl[url].indexOf(userRole) >= 0);
+        for (let role of roles) {
+            isAllowed = isAllowed || (acl[url].indexOf(role) >= 0);
         }
 
         if (!isAllowed) {
-            console.log('Denied(UserRole):' + url);
+            console.log('Denied(Role):' + url);
             return false;
         }
 
