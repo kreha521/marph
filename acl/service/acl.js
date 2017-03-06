@@ -4,7 +4,7 @@ var settings = {};
 var acl = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
 for (let one of acl) {
-    Object.keys(one).forEach(function(url) {
+    Object.keys(one).forEach(url => {
         settings[url] = one[url];
     });
 }
