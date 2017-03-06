@@ -13,7 +13,7 @@ module.exports = {
     isAuthorized:function(url, userRoles) {
         if (!url || !Array.isArray(userRoles)) {
             console.log('Missing params');
-            return;
+            return false;
         }
 
         if (!settings.hasOwnProperty(url)) {
