@@ -10,16 +10,22 @@ for (var i in acljson) {
 }
 
 module.exports = {
-    isAuthorized:function(url, user) {
+    isAuthorized:function(url, userRoles) {
         if (!settings.hasOwnProperty(url)) {
-            console.log('Url is not found:' + url);
+            console.log('Denied(Url):' + url);
             return false;
         }
 
         var roles = settings[url];
+        var isAllowed = false;
 
-        if (roles.indexOf(user) <= -1) {
-            console.log('Role is not found:' + url);
+        for (var i in userRoles) {
+            var userRole = userRoles[i];
+            isAllowed = isAllowed || (roles.indexOf(userRole) >= 0);
+        }
+
+        if (!isAllowed) {
+            console.log('Denied(UserRole):' + url);
             return false;
         }
 
