@@ -23,7 +23,7 @@ module.exports = {
 
         var isAllowed = false;
         for (let role of roles) {
-            isAllowed = isAllowed || (acl[url].indexOf(role) >= 0);
+            isAllowed |= (acl[url].indexOf(role) >= 0);
             if (isAllowed) {
                 break;
             }
