@@ -1,11 +1,11 @@
 var fs = require('fs');
 
-var settings = {};
-var acl = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
+var acl = {};
+var settings = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
-for (let one of acl) {
+for (let one of settings) {
     Object.keys(one).forEach(url => {
-        settings[url] = one[url];
+        acl[url] = one[url];
     });
 }
 
@@ -16,16 +16,14 @@ module.exports = {
             return false;
         }
 
-        if (!settings.hasOwnProperty(url)) {
+        if (!acl.hasOwnProperty(url)) {
             console.log('Denied(Url):' + url);
             return false;
         }
 
-        var roles = settings[url];
-
         var isAllowed = false;
         for (let userRole of userRoles) {
-            isAllowed = isAllowed || (roles.indexOf(userRole) >= 0);
+            isAllowed = isAllowed || (acl[url].indexOf(userRole) >= 0);
         }
 
         if (!isAllowed) {
