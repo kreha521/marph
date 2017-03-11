@@ -34,5 +34,7 @@ module.exports = {
             callback(new Error('Denied(Role):' + url));
             return;
         }
+
+        callback();
     }
 }
