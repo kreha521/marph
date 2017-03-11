@@ -2,7 +2,7 @@ var express = require('express');
 
 var app = express();
 
-var acl = require('./service/acl.js');
+var acl = require('./acl.js');
 
 acl.isAuthorized('/users/get', ["pm"], (err) => {
     if(err) console.log(err)
