@@ -4,9 +4,9 @@ var acl = new Map();
 var settings = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
 for (let one of settings) {
-    Object.keys(one).forEach(url => {
+    for (url of Object.keys(one)) {
         acl.set(url, one[url]);
-    });
+    }
 }
 
 module.exports = {
