@@ -19,8 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var acl = require('./service/acl.js');
 
-acl.isAuthorized('/users/get', ["pm"]);
-acl.isAuthorized('/users/add', ["pm"]);
-acl.isAuthorized('/users/add', ["pm", "admin"]);
+acl.isAuthorized('/users/get', ["pm"], (err) => console.log(err));
+acl.isAuthorized('/users/add', ["pm"], (err) => console.log(err));
+acl.isAuthorized('/users/add', ["pm", "admin"], (err) => console.log(err));
 
 module.exports = app;

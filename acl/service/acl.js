@@ -1,40 +1,38 @@
 var fs = require('fs');
 
-var acl = {};
+var acl = new Map();
 var settings = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
 for (let one of settings) {
     Object.keys(one).forEach(url => {
-        acl[url] = one[url];
+        acl.set(url, one[url]);
     });
 }
 
 module.exports = {
-    isAuthorized:function(url, roles) {
-        if (!url || !Array.isArray(roles)) {
-            console.log('Missing params');
-            return false;
+    isAuthorized:function(url, userRoles, callback) {
+        if (!url || !Array.isArray(userRoles)) {
+            callback(new Error('Missing params'));
+            return;
         }
 
-        if (!acl.hasOwnProperty(url)) {
-            console.log('Denied(Url):' + url);
-            return false;
+        if (!acl.has(url)) {
+            callback(new Error('Denied(Url):' + url));
+            return;
         }
 
+        userRoles = new Set(userRoles);
         var isAllowed = false;
-        for (let role of roles) {
-            isAllowed |= (acl[url].indexOf(role) >= 0);
+        for (let role of acl.get(url)) {
+            isAllowed |= (userRoles.has(role));
             if (isAllowed) {
                 break;
             }
         }
 
         if (!isAllowed) {
-            console.log('Denied(Role):' + url);
-            return false;
+            callback(new Error('Denied(Role):' + url));
+            return;
         }
-
-        console.log("Allowed:" + url); 
-        return true;
     }
 }
