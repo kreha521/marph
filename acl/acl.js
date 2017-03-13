@@ -4,14 +4,14 @@ var acl = new Map();
 var settings = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
 for (let one of settings) {
-    for (url of Object.keys(one)) {
-        acl.set(url, one[url]);
+    for (let url of Object.keys(one)) {
+        acl.set(url, new Set(one[url]));
     }
 }
 
 module.exports = {
-    isAuthorized:function(url, userRoles, callback) {
-        if (!url || !Array.isArray(userRoles)) {
+    isAuthorized:function(url, roles, callback) {
+        if (!url || !Array.isArray(roles)) {
             callback(new Error('Missing params'));
             return;
         }
@@ -21,10 +21,9 @@ module.exports = {
             return;
         }
 
-        userRoles = new Set(userRoles);
         var isAllowed = false;
-        for (let role of acl.get(url)) {
-            isAllowed |= (userRoles.has(role));
+        for (let role of roles) {
+            isAllowed |= (acl.get(url).has(role));
             if (isAllowed) {
                 break;
             }
