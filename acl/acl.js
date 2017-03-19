@@ -10,7 +10,7 @@ for (let one of settings) {
 }
 
 module.exports = {
-    isAuthorized:function(url, roles, callback) {
+    isAuthorized:(url, roles, callback) => {
         if (!url || !Array.isArray(roles)) {
             callback(new Error('Missing params'));
             return;
