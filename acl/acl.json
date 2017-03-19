@@ -1,4 +1,5 @@
 [
     {"/users/get":["privilege", "admin", "pm", "pl"]},
-    {"/users/add":["privilege", "admin"]}
+    {"/users/add":["privilege", "admin"]},
+    {"/users/del":["privilege", "admin"]}
 ]
