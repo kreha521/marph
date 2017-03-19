@@ -3,8 +3,8 @@ var fs = require('fs');
 var acl = new Map();
 var settings = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
-for (let one of settings) {
-    for (let url of Object.keys(one)) {
+for (let setting of settings) {
+    for (let url of Object.keys(setting)) {
         acl.set(url, new Set(one[url]));
     }
 }
