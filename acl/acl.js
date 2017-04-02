@@ -5,7 +5,7 @@ var settings = JSON.parse(fs.readFileSync(__dirname + '/acl.json', 'utf8'));
 
 for (let setting of settings) {
     for (let url of Object.keys(setting)) {
-        acl.set(url, new Set(one[url]));
+        acl.set(url, new Set(setting[url]));
     }
 }
 
