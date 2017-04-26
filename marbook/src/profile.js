@@ -1,9 +1,11 @@
 import * as React from 'react';
 
-export default class Profile extends React.Component<{}, {}> {
+export default class Profile extends React.Component {
     render() {
         return (
-            <h2>プロフィール</h2>
+            <div id="contents">
+                <h2>Profile</h2>
+            </div>
         );
     }
 }

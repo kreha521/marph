@@ -2,11 +2,16 @@
 import React, { PropTypes, Component } from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class App extends Component {
     render() {
         return (
             <div>
+            <Link to="/home">Home</Link>
+            <Link to="/profile">プロフィール</Link>
+            <Link to="/works">お仕事</Link>
+            
                 <Navbar inverse fluid >
                     <Navbar.Header>
                         <Navbar.Brand>
