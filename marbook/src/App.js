@@ -16,12 +16,18 @@ class App extends Component {
                     </Navbar.Header>
 
                     <Navbar.Collapse>
-                        <Nav activeKey={1}>
+                        <Nav>
                             <LinkContainer to='/profile'>
-                                <NavItem eventKey={1}>プロフィール</NavItem>
+                                <NavItem eventKey={'profile'}>プロフィール</NavItem>
                             </LinkContainer>
                             <LinkContainer to='/works'>
-                                <NavItem eventKey={2}>お仕事</NavItem>
+                                <NavItem eventKey={'works'}>お仕事</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to='/interest'>
+                                <NavItem eventKey={'interest'}>興味</NavItem>
+                            </LinkContainer>
+                            <LinkContainer to='/contact'>
+                                <NavItem eventKey={'contact'}>問合せ</NavItem>
                             </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>

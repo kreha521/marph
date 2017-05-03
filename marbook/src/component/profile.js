@@ -6,7 +6,7 @@ export default class Profile extends React.Component {
             <div id="contents">
                 <article>
                     <section class="pattern-bg-lighter">
-                      <img alt="Masaaki Uegaki" title="Masaaki Uegaki" src="/images/profile.png" />
+                      <figure><img alt="Masaaki Uegaki" title="Masaaki Uegaki" src="/images/profile.png" /></figure>
                         <h2>
                             <span>Masaaki Uegaki</span>
                         </h2>
@@ -16,11 +16,7 @@ export default class Profile extends React.Component {
                         <h3>
                             <span>Osaka, Japan</span>
                         </h3>
-
-                        <div class="map active">
-                           <img src="http://maps.google.com/maps/api/staticmap?center=34.7229084,135.4907251&markers=color:red|label:|37.775,-122.4183&zoom=14&size=278x125&sensor=false" alt="" />
-                        </div>          
-                    </section>
+                      </section>
                 </article>
             </div>
         );
