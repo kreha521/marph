@@ -26,9 +26,6 @@ class App extends Component {
                             <LinkContainer to='/interest'>
                                 <NavItem eventKey={'interest'}>興味</NavItem>
                             </LinkContainer>
-                            <LinkContainer to='/contact'>
-                                <NavItem eventKey={'contact'}>問合せ</NavItem>
-                            </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
